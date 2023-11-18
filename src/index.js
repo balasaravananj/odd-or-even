@@ -15,9 +15,10 @@ store.subscribe(()=>{
    return console.log('State', store.getState());
 })
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-   <App> </App>
+   <Provider store={store}>
+      <App />
+   </Provider>
 );
 
