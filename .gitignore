@@ -1,2 +1,4 @@
-.parcel-cache/data.mdb
-.parcel-cache/lock.mdb
+*node_modules*
+*dist*
+*.cache*
+*DS_Store*
