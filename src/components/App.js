@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { startGame, endGame, instructionExpand, instructionCollapse } from '../actions/settings';
 import Instructions from './Instructions';
+import { fetchNewDeck } from '../actions/deck';
 
 
 
 class App extends Component {
+
+    startGame = () => {
+        this.props.startGame();
+        this.props.fetchNewDeck();
+    }
 
     render(){
         return(
@@ -21,7 +27,7 @@ class App extends Component {
                      ) : ( <div>
                         <h3>A new game awaits</h3>
                         <br />
-                        <button onClick={this.props.startGame}>Start Game</button>
+                        <button onClick={this.startGame}>Start Game</button>
                          </div>)
                 }
                 <hr />
@@ -43,7 +49,8 @@ const mapDispatchToProps = (dispatch) => {
         startGame: () => dispatch(startGame()),
         endGame: () => dispatch(endGame()),
         instructionExpand: () => dispatch(instructionExpand()),
-        instructionCollapse: () => dispatch(instructionCollapse())
+        instructionCollapse: () => dispatch(instructionCollapse()),
+        fetchNewDeck: () => fetchNewDeck(dispatch)
     };
 };
 
