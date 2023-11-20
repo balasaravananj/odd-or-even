@@ -46,10 +46,10 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        gameStarted : state.gameStarted,
-        expandInstruction : state.expandInstruction,
-        fetchstates: state.fetchstates,
-        message: state.message
+        gameStarted : state.settings.gameStarted,
+        expandInstruction : state.settings.expandInstruction,
+        fetchstates: state.deck.fetchstates,
+        message: state.deck.message
     };
 };
 
