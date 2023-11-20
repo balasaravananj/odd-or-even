@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { startGame, endGame, instructionExpand, instructionCollapse } from '../actions/settings';
 import Instructions from './Instructions';
 import { fetchNewDeck } from '../actions/deck';
-
+import fetchstates from '../reducers/fetchstates';
 
 
 class App extends Component {
@@ -14,33 +14,42 @@ class App extends Component {
     }
 
     render(){
-        return(
-            <div>
-                <h1> ♠ ♣ Odd or Even ♥ ♦ </h1>
-                {
-                    this.props.gameStarted ? (
-                        <div>
-                            <h3>The game is on!</h3>
+        if(this.props.fetchstates === 'error'){
+            return (<div>
+                <p>Please try reloading the App. An error occurred</p>
+                <p>{this.props.message}</p>
+            </div>);
+        }
+         return(
+                <div>
+                    <h1> ♠ ♣ Odd or Even ♥ ♦ </h1>
+                    {
+                        this.props.gameStarted ? (
+                            <div>
+                                <h3>The game is on!</h3>
+                                <br />
+                                <button onClick={this.props.endGame}>Cancel Game</button>
+                            </div>
+                         ) : ( <div>
+                            <h3>A new game awaits</h3>
                             <br />
-                            <button onClick={this.props.endGame}>Cancel Game</button>
-                        </div>
-                     ) : ( <div>
-                        <h3>A new game awaits</h3>
-                        <br />
-                        <button onClick={this.startGame}>Start Game</button>
-                         </div>)
-                }
-                <hr />
-                <Instructions instruction = {this.props} />
-            </div>
-        );
+                            <button onClick={this.startGame}>Start Game</button>
+                             </div>)
+                    }
+                    <hr />
+                    <Instructions instruction = {this.props} />
+                </div>
+            );
+       
     }
 }
 
 const mapStateToProps = (state) => {
     return {
         gameStarted : state.gameStarted,
-        expandInstruction : state.expandInstruction
+        expandInstruction : state.expandInstruction,
+        fetchstates: state.fetchstates,
+        message: state.message
     };
 };
 
