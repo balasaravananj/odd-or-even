@@ -4,7 +4,6 @@ import { Component } from "react";
 class Instructions extends Component {
 
     render(){
-        console.log('Instruction', this.props);
         const { expandInstruction, instructionExpand, instructionCollapse} = this.props.instruction;
 
         const FULL_INSTRUCTION = `Welcome to Odd or Even. The game goes like this.

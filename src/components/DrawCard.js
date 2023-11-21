@@ -3,7 +3,6 @@ import  { connect } from 'react-redux';
 import { fetchNextCard } from "../actions/deckDraw";
 
 const DrawCard = ({deck_id, fetchNextCard}) => {
-    console.log('deck_id', deck_id);
     return(
          <div>
             <button onClick={fetchNextCard(deck_id)}>Draw the next card!</button>

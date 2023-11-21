@@ -1,5 +1,6 @@
 export const SET_GAME_STARTED = 'SET_GAME_STARTED';
 export const SET_EXPAND_INSTRUCTION = 'SET_EXPAND_INSTRUCTION';
+export const SET_GUESS = 'SET_GUESS';
 
 export const DECK = {
     FETCH_SUCCESS : 'DECK_FETCH_SUCCESS',

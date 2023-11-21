@@ -2,7 +2,6 @@ import { DECK_DRAW } from "./types";
 
 
 const fetchCardSuccess = (cardJson) => {
-    console.log('cardJson', cardJson);
     return ({
         type: DECK_DRAW.FETCH_SUCCESS,
         cards : cardJson.cards,
@@ -27,7 +26,7 @@ export const fetchNextCard = (deck_id) => (dispatch) => {
        return respone.json()
      }
     )
-     .then(json => fetchCardSuccess(json)) 
-     .catch(error => fetchCardError(error)) 
+     .then(json => dispatch(fetchCardSuccess(json))) 
+     .catch(error => dispatch(fetchCardError(error)) )
     )
 }
